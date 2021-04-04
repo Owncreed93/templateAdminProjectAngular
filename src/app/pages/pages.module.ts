@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 // ******************************* CUSTOMIZED MODULES ********************************* //
-
 import { SharedModule } from '../shared/shared.module';
 import { AppRoutingModule } from '../app-routing.module';
+import { ComponentsModule } from '../components/components.module';
 
 // ************************************************************************************ //
 
@@ -25,8 +26,10 @@ import { PagesComponent } from './pages.component';
     PagesComponent
   ],
   imports: [
+    FormsModule,
     SharedModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ComponentsModule
   ],
   exports: [
     DashboardComponent,
