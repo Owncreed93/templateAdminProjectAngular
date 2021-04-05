@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 
-import { MultiDataSet, Label, Color, SingleDataSet } from 'ng2-charts';
+import { SingleDataSet, Label, Color,  } from 'ng2-charts';
 
 @Component({
   selector: 'app-dona',
