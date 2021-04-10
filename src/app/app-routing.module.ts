@@ -20,6 +20,8 @@ const routes: Routes = [
   // path: '/charts' PagesRouting
   // path: '/progress' PagesRouting
   // path: '/account-settings' PagesRouting
+  // path: '/promises' PagesRouting
+  // path: '/rxjs' PagesRouting
   // path: '/login' AuthRouting
   // path: '/register' AuthRouting
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
