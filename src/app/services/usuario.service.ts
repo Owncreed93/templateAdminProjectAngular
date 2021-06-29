@@ -54,5 +54,21 @@ export class UsuarioService {
 
   }
 
+  loginGoogle( token ): Observable<any>{
+
+    return this.http.post( `${ base_url }/login/google`, { token } )
+        .pipe(
+          tap(
+
+            resp => {
+
+              localStorage.setItem( 'token', resp.token );
+
+            }
+          )
+         );
+
+  }
+
 
 }
