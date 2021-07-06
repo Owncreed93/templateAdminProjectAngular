@@ -1,6 +1,10 @@
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 
+// *********************************** GUARDS **************************************** //
+
+import { AuthGuard } from '../guards/auth.guard';
+
 // **************************** CUSTOMIZED COMPONENTS ********************************* //
 
 import { PagesComponent } from './pages.component';
@@ -17,6 +21,7 @@ const routes: Routes = [
     {
         path: 'dashboard',
         component: PagesComponent,
+        canActivate: [ AuthGuard ],
         children: [
           { path: '', component: DashboardComponent, data: { titulo: 'Dashboard' } },
           { path: 'charts', component: Grafica1Component, data: { titulo: 'Charts' } },

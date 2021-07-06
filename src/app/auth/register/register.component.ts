@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
+import { Router } from '@angular/router';
+
 // ********************************* THIRD PARTY PACKAGES **************************************** //
 
 import Swal from 'sweetalert2';
@@ -33,6 +35,7 @@ export class RegisterComponent {
 
   constructor(
     private fb: FormBuilder,
+    private router: Router,
     private usuarioService: UsuarioService
     ) { }
 
@@ -53,8 +56,10 @@ export class RegisterComponent {
     // POST USER
     this.usuarioService.crearUsuario( this.registerForm.value )
       .subscribe( resp => {
-        console.log( 'usuario creado' );
-        console.log( resp );
+
+        // NAVIGATE TO DASHBOARD;
+        this.router.navigateByUrl('/');
+
       },
 
         (err) => {
