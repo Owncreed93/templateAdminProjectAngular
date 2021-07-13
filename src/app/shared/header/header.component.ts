@@ -1,6 +1,14 @@
 import { Component, OnInit } from '@angular/core';
+
+// ****************************** SERVICE ************************* //
+
 import { UsuarioService } from '../../services/usuario.service';
 
+// ****************************** MODEL ************************* //
+
+import { Usuario } from '../../../models/usuario.models';
+
+// *************************************************************** //
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -9,7 +17,15 @@ import { UsuarioService } from '../../services/usuario.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor( private usuarioService: UsuarioService ) { }
+  public user: Usuario;
+  public imgUrl: string;
+
+  constructor( private usuarioService: UsuarioService ) {
+
+    this.user = usuarioService.usuario;
+    this.imgUrl = usuarioService.usuario.imageUrl;
+
+  }
 
   ngOnInit(): void {
   }

@@ -6,6 +6,10 @@ import { Router } from '@angular/router';
 import { Observable, of, pipe } from 'rxjs';
 import { tap, map, catchError } from 'rxjs/operators';
 
+// *************************** MODELS ************************** //
+
+import { Usuario } from 'src/models/usuario.models';
+
 // *************************** INTERFACE ************************** //
 
 import { LoginForm } from '../interfaces/login-form.interface';
@@ -27,6 +31,7 @@ declare const gapi: any;
 export class UsuarioService {
 
   public auth2: any;
+  public usuario: Usuario;
 
   constructor(
     private http: HttpClient,
@@ -95,6 +100,23 @@ export class UsuarioService {
 
         ( resp: any ) => {
 
+          const {
+            email,
+            google,
+            nombre,
+            role,
+            img,
+            uid } = resp.usuario;
+
+          this.usuario = new Usuario(
+            nombre,
+            email,
+            '',
+            img,
+            google,
+            role,
+            uid
+          );
           localStorage.setItem( 'token', resp.token );
 
         }

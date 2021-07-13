@@ -3,6 +3,11 @@ import { Component, OnInit } from '@angular/core';
 // ****************************** SERVICE ************************* //
 
 import { SidebarService } from '../../services/sidebar.service';
+import { UsuarioService } from '../../services/usuario.service';
+
+// ****************************** MODEL ************************* //
+
+import { Usuario } from '../../../models/usuario.models';
 
 // *************************************************************** //
 @Component({
@@ -13,10 +18,17 @@ import { SidebarService } from '../../services/sidebar.service';
 })
 export class SidebarComponent implements OnInit {
 
+  public user: Usuario;
+  public imgUrl: string;
   menuItems: any[];
 
-  constructor( private sidebarService: SidebarService ) {
+  constructor(
+    private sidebarService: SidebarService,
+    private usuarioService: UsuarioService
+  ) {
 
+    this.user = usuarioService.usuario;
+    this.imgUrl = usuarioService.usuario.imageUrl;
     this.menuItems = this.sidebarService.menu;
     console.log( this.menuItems );
 
