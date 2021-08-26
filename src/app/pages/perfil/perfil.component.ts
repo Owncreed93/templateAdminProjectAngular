@@ -99,7 +99,7 @@ export class PerfilComponent implements OnInit {
       this.imgTemp = reader.result;
       // console.log( reader.result );
 
-    }
+    };
 
   }
 

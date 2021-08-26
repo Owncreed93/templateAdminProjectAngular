@@ -20,6 +20,9 @@ import { PromesasComponent } from './promesas/promesas.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
 import { PerfilComponent } from './perfil/perfil.component';
 
+// Mantenimientos
+import { UsuariosComponent } from './mantenimientos/usuarios/usuarios.component';
+
 // ********************************************************************************* //
 
 
@@ -32,7 +35,8 @@ import { PerfilComponent } from './perfil/perfil.component';
     AccountsettingsComponent,
     PromesasComponent,
     RxjsComponent,
-    PerfilComponent
+    PerfilComponent,
+    UsuariosComponent
   ],
   imports: [
     CommonModule,
