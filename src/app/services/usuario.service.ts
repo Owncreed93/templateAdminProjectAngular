@@ -50,6 +50,12 @@ export class UsuarioService {
 
   }
 
+  get role(): 'ADMIN_ROLE' | 'USER_ROLE' {
+
+    return this.usuario.role;
+
+  }
+
   get uid(): string {
 
     return this.usuario.uid || '';
@@ -89,9 +95,17 @@ export class UsuarioService {
 
   }
 
+  guardarLocalStorage( token: string, menu: any ) {
+
+    localStorage.setItem( 'token', token );
+    localStorage.setItem('menu', JSON.stringify(menu));
+
+  }
+
   logout(): void {
 
-    localStorage.removeItem( 'token' );
+    localStorage.removeItem('token');
+    localStorage.removeItem('menu');
 
     this.auth2.signOut().then( () => {
 
@@ -135,7 +149,8 @@ export class UsuarioService {
             role,
             uid
           );
-          localStorage.setItem( 'token', resp.token );
+          this.guardarLocalStorage(resp.token, resp.menu );
+
           return true;
         }
 
@@ -156,8 +171,7 @@ export class UsuarioService {
 
                       resp => {
 
-                        localStorage.setItem( 'token', resp.token );
-
+                        this.guardarLocalStorage(resp.token, resp.menu );
                       }
                     )
                   );
@@ -183,7 +197,7 @@ export class UsuarioService {
 
             resp => {
 
-              localStorage.setItem( 'token', resp.token );
+              this.guardarLocalStorage(resp.token, resp.menu );
 
             }
           )
@@ -199,7 +213,7 @@ export class UsuarioService {
 
             resp => {
 
-              localStorage.setItem( 'token', resp.token );
+              this.guardarLocalStorage(resp.token, resp.menu );
 
             }
           )

@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 // *********************************** GUARDS **************************************** //
 
 import { AuthGuard } from '../guards/auth.guard';
+import { AdminGuard } from '../guards/admin.guard';
 
 // **************************** CUSTOMIZED COMPONENTS ********************************* //
 
@@ -39,10 +40,12 @@ const routes: Routes = [
           { path: 'rxjs', component: RxjsComponent, data: { titulo: 'RxJs' } },
 
           // Mantenimientos
-          { path: 'usuarios', component: UsuariosComponent, data: { titulo: 'Mantenimiento de usuarios' } },
           { path: 'hospitales', component: HospitalesComponent, data: { titulo: 'Mantenimiento de Hospitales' } },
           { path: 'medicos', component: MedicosComponent, data: { titulo: 'Mantenimiento de Médicos' } },
-          { path: 'medico/:id', component: MedicoComponent, data: { titulo: 'Mantenimiento de Médico' } }
+          { path: 'medico/:id', component: MedicoComponent, data: { titulo: 'Mantenimiento de Médico' } },
+
+          // Routes Admin
+          { path: 'usuarios', canActivate: [AdminGuard] , component: UsuariosComponent, data: { titulo: 'Mantenimiento de usuarios' } },
         ]
     },
 

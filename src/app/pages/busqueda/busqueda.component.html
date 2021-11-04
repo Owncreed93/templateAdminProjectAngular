@@ -8,13 +8,15 @@
 
                 <h3>Usuarios</h3>
 
-                <div class="alert alert-info">
+                <div class="alert alert-info animated fadeIn fast"
+                     *ngIf="usuarios.length === 0">
                     <a href="" class="mb-0">
                         No hay usuarios con ese término
                     </a>
                 </div>
 
-                <div class="table-responsive">
+                <div class="table-responsive"
+                     *ngIf="usuarios.length > 0">
                     <table class="table">
                         <thead>
                             <tr>
@@ -23,9 +25,10 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Deshmukh</td>
+                            <tr *ngFor="let usuario of usuarios"
+                                class="animated fadeIn fast">
+                                <td><img [src]="usuario.img | imagen:'usuarios'" class="w75"/></td>
+                                <td>{{ usuario.nombre }}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -45,13 +48,16 @@
 
                 <h3>M&eacute;dicos</h3>
 
-                <div class="alert alert-info">
+                <div class="alert alert-info animated fadeIn fast"
+                    *ngIf="medicos.length === 0">
                     <a href="" class="mb-0">
                         No hay m&eacute;dicos con ese término
                     </a>
                 </div>
 
-                <div class="table-responsive">
+                <div class="table-responsive"
+                    *ngIf="medicos.length > 0"
+                    >
                     <table class="table">
                         <thead>
                             <tr>
@@ -60,9 +66,14 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Deshmukh</td>
+                            <tr *ngFor="let medico of medicos"
+                                class="animated fadeIn fast"
+                                (click)="abrirMedico( medico )"
+                                >
+                                <td><img [src]="medico.img | imagen:'medicos'" class="w75"/></td>
+                                <td>
+                                    <a [routerLink]="['/dashboard/medico', medico._id]">{{ medico.nombre }}</a>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -82,13 +93,15 @@
 
                 <h3>Hospitales</h3>
 
-                <div class="alert alert-info">
+                <div class="alert alert-info animated fadeIn fast"
+                *ngIf="hospitales.length === 0">
                     <a href="" class="mb-0">
                         No hay hospitales con ese término
                     </a>
                 </div>
 
-                <div class="table-responsive">
+                <div class="table-responsive"
+                *ngIf="hospitales.length > 0">
                     <table class="table">
                         <thead>
                             <tr>
@@ -97,9 +110,10 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Deshmukh</td>
+                            <tr *ngFor="let hospital of hospitales"
+                                class="animated fadeIn fast">
+                                <td><img [src]="hospital.img | imagen:'hospitales'" class="w75"/></td>
+                                <td>{{ hospital.nombre }}</td>
                             </tr>
                         </tbody>
                     </table>
